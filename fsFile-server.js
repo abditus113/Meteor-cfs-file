@@ -129,7 +129,7 @@ FS.File.prototype.copy = function() {
   if (!self.isMounted()) {
     throw new Error("Cannot copy a file that is not associated with a collection");
   }
-  
+
   // Get the file record
   var fileRecord = self.collection.files.findOne({_id: self._id}, {transform: null}) || {};
 
@@ -220,4 +220,4 @@ function _copyStoreData(fileObj, storeName, sourceKey, callback) {
 
   readStream.pipe(writeStream);
 }
-var copyStoreData = Meteor._wrapAsync(_copyStoreData);
+var copyStoreData = Meteor.wrapAsync(_copyStoreData);
